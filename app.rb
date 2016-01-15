@@ -11,7 +11,7 @@ get('/') do
 end
 
 post('/add_word') do
-  Dictionary.new(:word => params.fetch("word")).save unless params.fetch("word").empty?
+  Dictionary.new(:word => params.fetch("word")).save unless params.fetch("word").strip.empty?
   redirect('/')
 end
 
@@ -21,7 +21,7 @@ get('/word_definitions/:id') do
 end
 
 post('/add_definition/:id') do
-  unless params.fetch("definition").empty?
+  unless params.fetch("definition").strip.empty?
     word = Dictionary.find_word(params.fetch("id").to_i)
     word.add_definition(params.fetch("definition"))
   end
