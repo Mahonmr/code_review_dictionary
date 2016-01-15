@@ -11,6 +11,11 @@ describe(Dictionary) do
     it('returns the word from the dictionary') do
       expect(@word.word).to eq("word")
     end
+
+    it('will only except first word in string')do
+      @word2 = Dictionary.new(word: "word to your mother")
+      expect(@word2.word).to eq("word")
+    end
   end
 
   describe('#id') do
@@ -35,6 +40,14 @@ describe(Dictionary) do
       expect(Dictionary.all.length).to eq(2)
       Dictionary.clear
       expect(Dictionary.all.length).to eq(0)
+    end
+  end
+
+  describe('.get') do
+    it('returns a word based on its id number') do
+      @word.save()
+      test_word = Dictionary.get(1)
+      expect(test_word.word).to eq("word")
     end
   end
 end
