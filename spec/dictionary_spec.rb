@@ -48,8 +48,7 @@ describe(Dictionary) do
   describe('.get') do
     it('returns a word based on its id number') do
       @word.save()
-      test_word = Dictionary.get(1)
-      expect(test_word.word).to eq("word")
+      expect(Dictionary.get(1).word).to eq("word")
     end
   end
 end
@@ -91,11 +90,10 @@ describe(Definition) do
     end
   end
 
-  # describe('.get') do
-  #   it('returns a word based on its id number') do
-  #     @word.save()
-  #     test_word = Dictionary.get(1)
-  #     expect(test_word.word).to eq("word")
-  #   end
-  # end
+  describe('.get') do
+    it('returns a definition based on its id number') do
+      @word.save()
+      expect(Definition.get(1).definition).to eq("This is a test definition")
+    end
+  end
 end
