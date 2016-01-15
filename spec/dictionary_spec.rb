@@ -51,6 +51,24 @@ describe(Dictionary) do
       expect(Dictionary.get(1).word).to eq("word")
     end
   end
+
+  describe('#add_definition') do
+    it('adds definition to word') do
+      @word.save()
+      word = Dictionary.get(1)
+      word.add_definition("This is a definition")
+      expect(word.definitions.last.definition).to eq("This is a definition")
+    end
+
+    it('can add multiple definitions to word') do
+      @word.save()
+      word = Dictionary.get(1)
+      word.add_definition("This is a definition")
+      word.add_definition("This is a definition2")
+      word.add_definition("This is a definition3")
+      expect(word.definitions.length).to eq(3)
+    end
+  end
 end
 
 describe(Definition) do
@@ -62,38 +80,6 @@ describe(Definition) do
   describe('#definition') do
     it('returns the definition') do
       expect(@word.definition).to eq("This is a test definition")
-    end
-  end
-
-  describe('#id') do
-    it('returns the id of the Definition') do
-      expect(@word.id).to eq(1)
-    end
-  end
-
-  describe('#save') do
-    it('pushes the new definition into the class varible array') do
-      expect(Definition.all.length).to eq(0)
-      @word.save()
-      expect(Definition.all.length).to eq(1)
-    end
-  end
-
-  describe('.clear') do
-    it('clears the class varible array') do
-      @word.save
-      @word = Definition.new(definition: "This is another definition")
-      @word.save
-      expect(Definition.all.length).to eq(2)
-      Definition.clear
-      expect(Definition.all.length).to eq(0)
-    end
-  end
-
-  describe('.get') do
-    it('returns a definition based on its id number') do
-      @word.save()
-      expect(Definition.get(1).definition).to eq("This is a test definition")
     end
   end
 end

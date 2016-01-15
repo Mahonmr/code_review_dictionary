@@ -1,15 +1,19 @@
 class Dictionary
-  attr_reader(:word, :id)
+  attr_reader(:word, :id, :definitions)
 
   @@dictionary = []
   def initialize(attributes)
     @word = attributes.fetch(:word).split(/\s+/)[0...1].join(' ')
-    @definition = []
+    @definitions = []
     @id = @@dictionary.length + 1
   end
 
   def save
     @@dictionary << self
+  end
+
+  def add_definition(definition)
+    self.definitions << Definition.new(definition: definition)
   end
 
   define_singleton_method(:get) do |id|
