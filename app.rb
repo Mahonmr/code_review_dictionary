@@ -11,7 +11,7 @@ get('/') do
 end
 
 post('/add_word') do
-  Dictionary.new(:word => params.fetch("word")).save unless params.fetch("word").strip.empty?
+  Dictionary.new(word: params.fetch("word")).save unless params.fetch("word").strip.empty?
   redirect('/')
 end
 

@@ -1,7 +1,6 @@
 require('rspec')
 require('dictionary')
 require('definition')
-require('pry')
 
 describe(Dictionary) do
   before() do

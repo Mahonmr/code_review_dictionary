@@ -3,17 +3,18 @@ require('./app')
 
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
-describe("Dictionary") do
+describe("Dictionary Integration") do
   before() do
     Dictionary.clear
   end
+
   describe("navigation of dictionary app", {:type => :feature}) do
     it('root path takes you to index page') do
       visit('/')
       expect(page).to have_content("Epicodus Dictionary")
     end
 
-    it('will redirect you to the root after add a word') do
+    it('will redirect you to the root after word added') do
       visit('/')
       fill_in "word", with: "computer"
       click_button('Add Word')

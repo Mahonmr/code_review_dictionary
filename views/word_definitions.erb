@@ -1,7 +1,7 @@
 <h1><%= "Definitions for the word \"#{@word.word}\"" %></h1>
 
 <form action="/add_definition/<%= @word.id %>" method="post">
-  <input type="text" id="definition" name="definition" size="100"placeholder="Add Definition"> <br>
+  <input type="text" id="definition" name="definition" size="100" placeholder="Add Definition"> <br>
   <button type="submit">Add</button>
 </form>
 <ul>
@@ -9,5 +9,4 @@
     <li><%= word.definition %></li>
   <% end %>
 </ul>
-
 <a href="/">Home</a>
