@@ -38,7 +38,7 @@ describe("Dictionary") do
 
     it('will redirect back to the root page from the definition page') do
       word = Dictionary.new(word: "computer").save
-      word = Dictionary.get(word.last.id)
+      word = Dictionary.find_word(word.last.id)
       word.add_definition("Test definition")
       visit("/word_definitions/#{word.id}")
       click_link('Home')

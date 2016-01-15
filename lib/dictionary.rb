@@ -16,7 +16,7 @@ class Dictionary
     self.definitions << Definition.new(definition: definition)
   end
 
-  define_singleton_method(:get) do |id|
+  define_singleton_method(:find_word) do |id|
     @@dictionary.each do |word|
       return word if word.id == id
     end

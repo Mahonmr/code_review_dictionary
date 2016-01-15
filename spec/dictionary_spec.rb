@@ -73,7 +73,6 @@ end
 
 describe(Definition) do
   before() do
-    Definition.clear
     @word = Definition.new(definition: "This is a test definition")
   end
 

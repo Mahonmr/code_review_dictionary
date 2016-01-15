@@ -16,13 +16,13 @@ post('/add_word') do
 end
 
 get('/word_definitions/:id') do
-  @word = Dictionary.get(params.fetch("id").to_i)
+  @word = Dictionary.find_word(params.fetch("id").to_i)
   erb(:word_definitions)
 end
 
 post('/add_definition/:id') do
   unless params.fetch("definition").empty?
-    word = Dictionary.get(params.fetch("id").to_i)
+    word = Dictionary.find_word(params.fetch("id").to_i)
     word.add_definition(params.fetch("definition"))
   end
   redirect("/word_definitions/#{params.fetch("id").to_i}")
