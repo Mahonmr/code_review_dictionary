@@ -1,5 +1,4 @@
 class Dictionary
-  require('pry')
   attr_reader(:word, :id)
 
   @@dictionary = []

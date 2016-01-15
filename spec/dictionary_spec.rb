@@ -1,5 +1,7 @@
 require('rspec')
 require('dictionary')
+require('definition')
+require('pry')
 
 describe(Dictionary) do
   before() do
@@ -50,4 +52,50 @@ describe(Dictionary) do
       expect(test_word.word).to eq("word")
     end
   end
+end
+
+describe(Definition) do
+  before() do
+    Definition.clear
+    @word = Definition.new(definition: "This is a test definition")
+  end
+
+  describe('#definition') do
+    it('returns the definition') do
+      expect(@word.definition).to eq("This is a test definition")
+    end
+  end
+
+  describe('#id') do
+    it('returns the id of the Definition') do
+      expect(@word.id).to eq(1)
+    end
+  end
+
+  describe('#save') do
+    it('pushes the new definition into the class varible array') do
+      expect(Definition.all.length).to eq(0)
+      @word.save()
+      expect(Definition.all.length).to eq(1)
+    end
+  end
+
+  describe('.clear') do
+    it('clears the class varible array') do
+      @word.save
+      @word = Definition.new(definition: "This is another definition")
+      @word.save
+      expect(Definition.all.length).to eq(2)
+      Definition.clear
+      expect(Definition.all.length).to eq(0)
+    end
+  end
+
+  # describe('.get') do
+  #   it('returns a word based on its id number') do
+  #     @word.save()
+  #     test_word = Dictionary.get(1)
+  #     expect(test_word.word).to eq("word")
+  #   end
+  # end
 end
