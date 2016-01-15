@@ -45,24 +45,24 @@ describe(Dictionary) do
     end
   end
 
-  describe('.get') do
+  describe('.find_word') do
     it('returns a word based on its id number') do
       @word.save()
-      expect(Dictionary.get(1).word).to eq("word")
+      expect(Dictionary.find_word(1).word).to eq("word")
     end
   end
 
   describe('#add_definition') do
     it('adds definition to word') do
       @word.save()
-      word = Dictionary.get(1)
+      word = Dictionary.find_word(1)
       word.add_definition("This is a definition")
       expect(word.definitions.last.definition).to eq("This is a definition")
     end
 
     it('can add multiple definitions to word') do
       @word.save()
-      word = Dictionary.get(1)
+      word = Dictionary.find_word(1)
       word.add_definition("This is a definition")
       word.add_definition("This is a definition2")
       word.add_definition("This is a definition3")

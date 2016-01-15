@@ -1,1 +1,12 @@
 <h1>Epicodus Dictionary</h1>
+
+<form action="/add_word" method="post">
+  <input type="text" id="word" name="word" placeholder="Add Word"> <br>
+  <button type="submit">Add Word</button>
+</form>
+
+<ul>
+  <% @words.each do |word| %>
+    <li><a href="/word_definitions/<%= word.id %>"> <%= word.word %></a></li>
+  <%end%>
+</ul>
