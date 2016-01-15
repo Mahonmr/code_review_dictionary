@@ -1,9 +1,10 @@
 require('rspec')
+require('dictionary')
 
 describe(Dictionary) do
   before() do
     Dictionary.clear()
-    @word = Dictionary.new("word")
+    @word = Dictionary.new(word: "word")
   end
 
   describe('#word') do
