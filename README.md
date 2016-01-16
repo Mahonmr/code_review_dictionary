@@ -4,9 +4,9 @@
 
 
 Dictionary is an app that allows you to enter words which will be displayed
-on the index page. Clicking on a word entered will send you to that word's
-definition page.  When on this page you can add one or more definitions to the
-word.  click the home link to be redirected back to the index page.
+on the index page. You can then add or view definitions of that word by clicking
+on it. After adding definitions to your word, you can click the home link to be
+redirected back to the index page.
 
 ##Installation
 
