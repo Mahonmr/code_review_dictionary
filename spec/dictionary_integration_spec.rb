@@ -97,4 +97,20 @@ describe("Dictionary Integration") do
       expect(word.last.definitions.length).to eq(0)
     end
   end
+
+  describe('word and definition relationships', {:type => :feature}) do
+    it('shows the definitions for a particular word and not another.') do
+      word = Dictionary.new(word: "computer").save
+      word = Dictionary.find_word(word.last.id)
+      word.add_definition("This is the computers definition")
+      word.add_definition("This is the computers second definition")
+      word2 = Dictionary.new(word: "software").save
+      word2 = Dictionary.find_word(word2.last.id)
+      word2.add_definition("This is the softwares definition")
+      word2.add_definition("This is the softwares second definition")
+      visit("/word_definitions/#{word.id}")
+      expect(page).to have_content(word.definitions.last.definition)
+      expect(page).to_not have_content(word2.definitions.last.definition)
+    end
+  end
 end
