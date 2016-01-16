@@ -19,7 +19,7 @@ https://github.com/Mahonmr/code_review_dictionary.git
 
 To run a live version of the game go to this url:
 ```
-https://
+https://rocky-savannah-4729.herokuapp.com/
 ```
 
 ##License
